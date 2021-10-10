@@ -1,0 +1,27 @@
+{
+  "on": {
+    "workflow_call": {
+      "inputs": {
+        "name": {
+          "type": "string",
+          "required": false,
+          "default": "world"
+        }
+      }
+    }
+  },
+  "jobs": {
+    "hello-world": {
+      "runs-on": "ubuntu-latest",
+      "steps": [
+        {
+          "name": "speak",
+          "run": "echo 'Hello, ${{ inputs.name }}!'"
+        }
+      ]
+    },
+    "call other job": {
+      "uses": "example/example-repo/.github/workflows/otherjob.yaml@v1"
+    }
+  }
+}
